@@ -17,37 +17,47 @@
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
-        <main class="main v-space h-space">
+        <header class="header v-space h-space">
             <div class="wrapper">
-                <h1>Calculate Size maintaining aspect ratio</h1>
-                <p>Given a size, calculate the increase or decrease of the size maintaining the aspect-ratio</p>                
-                <div class="fieldset-group">
-                    <h2>First introduce the original width and height of the element:</h2>
-                    <p>Both measurements are required for this to work.</p>
-                    <fieldset class="fieldset fieldset--text fieldset--width">
-                        <label for="width">Width</label>
-                        <input type="number" name="width" id="width" placeholder="Width">
-                    </fieldset>
-                    <fieldset class="fieldset fieldset--text fieldset--height">
-                        <label for="height">Height</label>
-                        <input type="number" name="height" id="height" placeholder="Height">
-                    </fieldset>
+                <h1 class="alpha heading">Calculate Size maintaining aspect ratio</h1>
+                <h2 class="delta">Given a size, calculate the increase or decrease of the size maintaining the aspect-ratio</h2>
+            </div>
+        </header>
+        <main class="main v-space">
+            <div class="wrapper wrapper--main grid grid--2">
+                <div class="controls">
+                    <div class="fieldset-group">
+                        <h3 class="gamma heading">Original Size</h3>
+                        <p>First introduce the original <i>width</i> and <i>height</i> of the element.</p>
+                        <fieldset class="fieldset fieldset--text fieldset--width">
+                            <label for="width">Width</label>
+                            <input type="number" name="width" id="width" placeholder="Width">
+                        </fieldset>
+                        <fieldset class="fieldset fieldset--text fieldset--height">
+                            <label for="height">Height</label>
+                            <input type="number" name="height" id="height" placeholder="Height">
+                        </fieldset>
+                        <small>*Both measurements are required for this to work.</small>
+                    </div>
+                    <div class="fieldset-group">
+                        <h3 class="gamma heading">Desired size</h3>
+                        <p>Now, introduce the <i>width</i> or the <i>height</i> desired.</p>
+                        <p><strong>Only one is required.</strong></p>
+                        <fieldset class="fieldset fieldset--text fieldset--new-width">
+                            <label for="new-width">New width</label>
+                            <input type="number" name="new-width" id="new-width" placeholder="New width">
+                        </fieldset>
+                        <fieldset class="fieldset fieldset--text fieldset--new-height">
+                            <label for="new-height">New height</label>
+                            <input type="number" name="new-height" id="new-height" placeholder="New height">
+                        </fieldset>
+                    </div>
                 </div>
-                <div class="fieldset-group">
-                    <h2>Now, introduce the width or the height desired:</h2>
-                    <p>Only one is required.</p>
-                    <fieldset class="fieldset fieldset--text fieldset--new-width"></fieldset>
-                        <label for="width">New width</label>
-                        <input type="number" name="new-width" id="new-width" placeholder="New width">
-                    </fieldset>
-                    <fieldset class="fieldset fieldset--text fieldset--new-height">
-                        <label for="height">New height</label>
-                        <input type="number" name="new-height" id="new-height" placeholder="New height">
-                    </fieldset>
-                </div>
-                <div class="result">
-                    <h2>Nuevo tamaño</h2>
-                    <p id="result"></p>
+                <div class="result flex">
+                    <h3 class="beta heading">New size</h3>
+                    <div class="loader" id="loader"><div></div><div></div></div>
+                    <p id="message" class="result__message epsilon nondisplayed"></p>
+                    <p id="result" class="result__number nondisplayed"></p>
                 </div>
             </div>
         </main>

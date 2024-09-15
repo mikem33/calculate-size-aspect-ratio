@@ -3,3 +3,124 @@
     $Main
 
 \*----------------------------- */
+
+body
+    font-family $roboto
+    background-color $background
+
+.header
+    .heading
+        margin-bottom 0
+        text-wrap balance
+    .delta
+        font-weight 400
+    +below(1023)
+        .heading
+            font-size rem(28)
+            line-height rem(32)
+            margin-bottom rem(10)
+        .delta
+            font-size rem(20)
+            line-height rem(28)
+
+.wrapper--main
+    gap rem(20)
+
+.fieldset
+    position relative
+    margin-bottom rem(20)
+    &-group
+        margin-bottom rem(20)
+        &:last-child
+            margin-bottom 0
+        .heading
+            margin-bottom 0
+    &--height
+        margin-bottom 0
+    label
+        color white
+        display none
+        right rem(10)
+        position absolute
+        background-color $darkGrey
+    input
+        width 100%
+        font-family $roboto
+        border-radius rem(4)
+        padding rem(10) rem(15)
+        outline-color $darkGrey
+        background-color $background
+        border rem(2) solid $darkGrey
+
+.result
+    position relative
+    min-height rem(200)
+    border-radius rem(8)
+    flex-direction column
+    .heading, &__message
+        margin-bottom 0
+    .heading
+        color white
+        border-radius rem(4)
+        margin-bottom rem(20)
+        align-self flex-start
+        padding rem(5) rem(15)
+        background-color $darkGrey
+    &__number
+        margin auto
+        font-weight 600
+        font-size rem(60)
+        align-self center
+        text-align center
+        border-radius rem(16)
+        padding rem(5) rem(25)
+        background-color #ededed
+        > span
+            top rem(-8)
+            position relative
+            font-size rem(40)
+    &__message
+        color red
+        align-self flex-start
+
+.loader
+    width rem(80)
+    height rem(80)
+    color $darkGrey
+    centerObject(true, true)
+    &:not(.nondisplayed)
+        display inline-block
+    div
+        opacity 1
+        position absolute
+        border-radius 50%
+        border rem(4) solid currentColor
+        animation loader 1s cubic-bezier(0, 0.2, 0.8, 1) infinite
+        &:nth-child(2)
+            animation-delay -.5s
+
+@keyframes loader
+  0%
+    opacity 0
+    top rem(36)
+    left rem(36)
+    width rem(8)
+    height rem(8)
+  4.9%
+    opacity 0
+    top rem(36)
+    left rem(36)
+    width rem(8)
+    height rem(8)
+  5%
+    opacity 1
+    top rem(36)
+    left rem(36)
+    width rem(8)
+    height rem(8)
+  100%
+    top 0
+    left 0
+    opacity 0
+    width rem(80)
+    height rem(80)

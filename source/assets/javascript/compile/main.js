@@ -3,13 +3,16 @@ function calculateAspectRatio(width, height, desiredWidth = null, desiredHeight 
     if (isNaN(width) || isNaN(height) || isNaN(desiredWidth) || isNaN(desiredHeight)) {
         return { status: 0, message: 'A valid number is required.'}
     }
-    width = width;
-    height = height;
+    
+    if (!width || !height) {
+        return { status: 0, message: 'Both original width and height are required.'}
+    }
 
     const aspectRatio = width / height;
 
+
     if (desiredWidth && desiredHeight) {
-        return { status: 0, message: 'Introduce only one measure.' };
+        return { status: 0, message: 'Introduce only one measure. <br/><i>Width</i> or <i>height</i>.' };
     }
     
     if (desiredWidth !== null && desiredWidth !== '') {
@@ -27,11 +30,30 @@ function calculateAspectRatio(width, height, desiredWidth = null, desiredHeight 
     return null;
 }
 
+function hideOutput(element) {
+    document.getElementById('loader').classList.remove('nondisplayed');
+    console.log('hola');
+    element.classList.add('nondisplayed');
+    element.innerHTML = '';
+}
+
+function showOutput(element, result) {
+    console.log('adios');
+    document.getElementById('loader').classList.add('nondisplayed');
+    element.classList.remove('nondisplayed');
+    if (result.status == 1) {
+        element.innerHTML = `${result.width} <span>x</span> ${result.height}`;
+    } else {
+        element.innerHTML = `${result.message}`;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const inputs = document.querySelectorAll('input[type="number"]');
 
     inputs.forEach(input => {            
         input.addEventListener('keyup', () => {
+
             const params = [
                 document.getElementById('width').value,
                 document.getElementById('height').value,
@@ -40,14 +62,19 @@ document.addEventListener('DOMContentLoaded', () => {
             ];
 
             const result = calculateAspectRatio(...params);
+
             const outputWrapper = document.getElementById('result');
+            const messageWrapper = document.getElementById('message');
             if (result === null) {
-                outputWrapper.innerHTML = '';
+                hideOutput(outputWrapper);
+                hideOutput(messageWrapper);
             } else {
                 if (result.status == 0) {
-                    outputWrapper.innerHTML = `${result.message}`;
+                    hideOutput(outputWrapper);
+                    showOutput(messageWrapper, result);                    
                 } else {
-                    outputWrapper.innerHTML = `${result.width}x${result.height}`;
+                    hideOutput(messageWrapper);
+                    showOutput(outputWrapper, result);                    
                 }
             }
         });
