@@ -22,8 +22,12 @@
   },
   "homepage": "https://github.com/mikem33/pandora-boilerplate",
   "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "babel-core": "^6.26.3",
     "del": "^2.2.2",
     "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-notify": "^4.0.0",
     "gulp-real-favicon": "^0.3.2",
