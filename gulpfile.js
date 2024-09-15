@@ -5,8 +5,8 @@ var del         = require('del'),
     rename      = require("gulp-rename"),
     concat      = require('gulp-concat'),
     uglify      = require('gulp-uglify'),
-    notify      = require("gulp-notify"),    
-    realFavicon = require('gulp-real-favicon'),
+    notify      = require("gulp-notify"),
+    babel       = require('gulp-babel'),
     runSequence = require('gulp4-run-sequence');
 
 // Compile Stylus CSS
@@ -28,6 +28,9 @@ gulp.task('js', function(done){
         .pipe(concat('javascript.js'))
         .pipe(gulp.dest('source/assets/javascript'))
         .pipe(notify('JS Compiled!'))
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
         .pipe(uglify())
         .pipe(gulp.dest('source/assets/javascript'));
     done();
@@ -36,72 +39,7 @@ gulp.task('js', function(done){
 // Watch
 gulp.task('watch', function() {
     gulp.watch('source/assets/javascript/compile/*.js', gulp.series('js'));
-    gulp.watch('source/assets/css/compile/styl/*.styl', gulp.series('style'));
-});
-
-gulp.task('generate-favicon', function(done) {
-    // File where the favicon markups are stored (unnecessary but I don't know how to avoid its generation).
-    var FAVICON_DATA_FILE = 'source/assets/images/favicons/faviconData.json';
-    realFavicon.generateFavicon({
-        masterPicture: 'source/assets/images/favicons/favicon-master.png',
-        dest: 'source/assets/images/favicons',
-        iconsPath: 'source/assets/images/favicons/',
-        design: {
-            ios: {
-                pictureAspect: 'noChange',
-                assets: {
-                    ios6AndPriorIcons: false,
-                    ios7AndLaterIcons: false,
-                    precomposedIcons: false,
-                    declareOnlyDefaultIcon: true
-                }
-            },
-            desktopBrowser: {},
-            windows: {
-                pictureAspect: 'noChange',
-                backgroundColor: '#2b5797',
-                onConflict: 'override',
-                assets: {
-                    windows80Ie10Tile: false,
-                    windows10Ie11EdgeTiles: {
-                        small: false,
-                        medium: true,
-                        big: false,
-                        rectangle: false
-                    }
-                }
-            },
-            androidChrome: {
-                pictureAspect: 'noChange',
-                themeColor: '#ffffff',
-                manifest: {
-                    display: 'standalone',
-                    orientation: 'notSet',
-                    onConflict: 'override',
-                    declared: true
-                },
-                assets: {
-                    legacyIcon: false,
-                    lowResolutionIcons: false
-                }
-            },
-            safariPinnedTab: {
-                pictureAspect: 'blackAndWhite',
-                threshold: 50,
-                themeColor: '#5bbad5'
-            }
-        },
-        settings: {
-            scalingAlgorithm: 'Mitchell',
-            errorOnImageTooSmall: false,
-            readmeFile: false,
-            htmlCodeFile: false,
-            usePathAsIs: false
-        },
-        markupFile: FAVICON_DATA_FILE
-    }, function() {
-        done();
-    });
+    gulp.watch('source/assets/css/compile/styl/*/*.styl', gulp.series('style'));
 });
 
 gulp.task('cleanBuild', function () {
@@ -119,6 +57,8 @@ gulp.task('copy', function(done) {
         .pipe(gulp.dest('build/assets/images/'))
     gulp.src('source/assets/images/*/*')
         .pipe(gulp.dest('build/assets/images/'))
+    gulp.src('source/assets/fonts/*')
+        .pipe(gulp.dest('build/assets/fonts/'))
         .pipe(notify('All the resources has been copied to the build folder.'));
     done();
 });
