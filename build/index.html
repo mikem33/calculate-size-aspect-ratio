@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+        <link rel="manifest" href="assets/images/favicons/site.webmanifest">
+        <link rel="mask-icon" href="assets/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+        <header class="header v-space h-space">
+            <div class="wrapper">
+                <h1 class="alpha heading">Calculate Size maintaining aspect ratio</h1>
+                <h2 class="delta">Given a size, calculate the increase or decrease of the size maintaining the aspect-ratio</h2>
+            </div>
+        </header>
+        <main class="main v-space">
+            <div class="wrapper wrapper--main grid grid--2">
+                <div class="controls">
+                    <div class="fieldset-group">
+                        <h3 class="gamma heading">Original Size</h3>
+                        <p>First introduce the original <i>width</i> and <i>height</i> of the element.</p>
+                        <fieldset class="fieldset fieldset--text fieldset--width">
+                            <label for="width">Width</label>
+                            <input type="number" name="width" id="width" placeholder="Width">
+                        </fieldset>
+                        <fieldset class="fieldset fieldset--text fieldset--height">
+                            <label for="height">Height</label>
+                            <input type="number" name="height" id="height" placeholder="Height">
+                        </fieldset>
+                        <small>*Both measurements are required for this to work.</small>
+                    </div>
+                    <div class="fieldset-group">
+                        <h3 class="gamma heading">Desired size</h3>
+                        <p>Now, introduce the <i>width</i> or the <i>height</i> desired.</p>
+                        <p><strong>Only one is required.</strong></p>
+                        <fieldset class="fieldset fieldset--text fieldset--new-width">
+                            <label for="new-width">New width</label>
+                            <input type="number" name="new-width" id="new-width" placeholder="New width">
+                        </fieldset>
+                        <fieldset class="fieldset fieldset--text fieldset--new-height">
+                            <label for="new-height">New height</label>
+                            <input type="number" name="new-height" id="new-height" placeholder="New height">
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="result flex">
+                    <h3 class="beta heading">New size</h3>
+                    <div class="loader" id="loader"><div></div><div></div></div>
+                    <p id="message" class="result__message epsilon nondisplayed"></p>
+                    <p id="result" class="result__number nondisplayed"></p>
+                </div>
+            </div>
+        </main>
+
+        <script src="assets/javascript/javascript.js"></script>
+        
+    </body>
+</html>
