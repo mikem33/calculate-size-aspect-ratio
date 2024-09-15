@@ -1,0 +1,36 @@
+{
+  "name": "pandora-boilerplate",
+  "version": "1.1.6",
+  "description": "An HTML Boilerplate to start a project.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Miguel Morera",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikem33/pandora-boilerplate.git"
+  },
+  "keywords": [
+    "html5",
+    "boilerplate",
+    "pandora"
+  ],
+  "bugs": {
+    "url": "https://github.com/mikem33/pandora-boilerplate/issues"
+  },
+  "homepage": "https://github.com/mikem33/pandora-boilerplate",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-notify": "^4.0.0",
+    "gulp-real-favicon": "^0.3.2",
+    "gulp-rename": "^1.2.3",
+    "gulp-stylus": "^2.7.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-watch": "^5.0.1",
+    "gulp4-run-sequence": "^1.0.1"
+  }
+}
