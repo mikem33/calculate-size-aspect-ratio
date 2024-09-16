@@ -32,13 +32,11 @@ function calculateAspectRatio(width, height, desiredWidth = null, desiredHeight 
 
 function hideOutput(element) {
     document.getElementById('loader').classList.remove('nondisplayed');
-    console.log('hola');
     element.classList.add('nondisplayed');
     element.innerHTML = '';
 }
 
 function showOutput(element, result) {
-    console.log('adios');
     document.getElementById('loader').classList.add('nondisplayed');
     element.classList.remove('nondisplayed');
     if (result.status == 1) {
